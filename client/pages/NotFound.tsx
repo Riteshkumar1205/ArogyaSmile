@@ -1,27 +1,52 @@
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { usePersona } from '@/hooks/usePersona';
+import { Button } from '@/components/ui/Button';
+import { Card, CardContent } from '@/components/ui/Card';
+import { AlertTriangle } from 'lucide-react';
 
-const NotFound = () => {
-  const location = useLocation();
+export default function NotFound() {
+  const navigate = useNavigate();
+  const { persona } = usePersona();
 
-  useEffect(() => {
-    console.error(
-      "404 Error: User attempted to access non-existent route:",
-      location.pathname,
-    );
-  }, [location.pathname]);
+  const getGradient = (p: string) => {
+    const gradients: Record<string, string> = {
+      rural: 'gradient-rural',
+      senior: 'gradient-senior',
+      urban: 'gradient-urban',
+      child: 'gradient-child',
+    };
+    return gradients[p] || 'gradient-urban';
+  };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">404</h1>
-        <p className="text-xl text-gray-600 mb-4">Oops! Page not found</p>
-        <a href="/" className="text-blue-500 hover:text-blue-700 underline">
-          Return to Home
-        </a>
-      </div>
+    <div className={`min-h-screen ${getGradient(persona)} transition-colors duration-500 flex items-center justify-center p-4 safe-inset`}>
+      <Card className="w-full max-w-md">
+        <CardContent className="p-8 text-center space-y-6">
+          <div className="w-20 h-20 bg-destructive/20 rounded-full flex items-center justify-center mx-auto">
+            <AlertTriangle className="w-10 h-10 text-destructive" />
+          </div>
+
+          <div>
+            <h1 className="text-4xl font-bold text-foreground mb-2">404</h1>
+            <p className="text-lg font-semibold text-foreground mb-2">
+              पेज नहीं मिला
+            </p>
+            <p className="text-sm text-muted-foreground">
+              आप जिस पेज को खोज रहे हैं, वह अभी उपलब्ध नहीं है।
+            </p>
+          </div>
+
+          <Button
+            onClick={() => navigate('/')}
+            variant="primary"
+            size="lg"
+            fullWidth
+          >
+            होम पर जाएं
+          </Button>
+        </CardContent>
+      </Card>
     </div>
   );
-};
-
-export default NotFound;
+}
