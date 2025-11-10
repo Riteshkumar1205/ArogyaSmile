@@ -66,9 +66,16 @@ export default function Scan() {
         {/* Scan Mode Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 animate-fade-in">
           {/* 360° Guided Scan */}
-          <button
+          <div
             onClick={() => navigate('/scan/360')}
-            className="group"
+            className="group cursor-pointer"
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                navigate('/scan/360');
+              }
+            }}
           >
             <Card className="h-full hover:shadow-lg transition-all duration-200 cursor-pointer border-2 hover:border-primary/50">
               <CardHeader>
@@ -88,22 +95,21 @@ export default function Scan() {
                   <li>✓ वॉइस गाइडेंस</li>
                   <li>✓ रीयल-टाइम फीडबैक</li>
                 </ul>
-                <Button
-                  size="md"
-                  variant="primary"
-                  fullWidth
-                  className="mt-4"
-                >
-                  शुरू करें →
-                </Button>
               </CardContent>
             </Card>
-          </button>
+          </div>
 
           {/* Image Upload */}
-          <button
+          <div
             onClick={() => navigate('/scan/upload')}
-            className="group"
+            className="group cursor-pointer"
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                navigate('/scan/upload');
+              }
+            }}
           >
             <Card className="h-full hover:shadow-lg transition-all duration-200 cursor-pointer border-2 hover:border-secondary/50">
               <CardHeader>
@@ -123,22 +129,21 @@ export default function Scan() {
                   <li>✓ पुरानी तस्वीरें अपलोड करें</li>
                   <li>✓ तुरंत विश्लेषण</li>
                 </ul>
-                <Button
-                  size="md"
-                  variant="primary"
-                  fullWidth
-                  className="mt-4"
-                >
-                  चुनें →
-                </Button>
               </CardContent>
             </Card>
-          </button>
+          </div>
 
           {/* Offline Quick Scan */}
-          <button
+          <div
             onClick={() => navigate('/scan/offline')}
-            className="group"
+            className="group cursor-pointer"
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                navigate('/scan/offline');
+              }
+            }}
           >
             <Card className="h-full hover:shadow-lg transition-all duration-200 cursor-pointer border-2 hover:border-accent/50">
               <CardHeader>
@@ -158,17 +163,9 @@ export default function Scan() {
                   <li>✓ तुरंत परिणाम</li>
                   <li>✓ बाद में अपलोड करें</li>
                 </ul>
-                <Button
-                  size="md"
-                  variant="primary"
-                  fullWidth
-                  className="mt-4"
-                >
-                  शुरू करें →
-                </Button>
               </CardContent>
             </Card>
-          </button>
+          </div>
         </div>
 
         {/* Info Box */}

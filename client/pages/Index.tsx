@@ -92,9 +92,16 @@ export default function Index() {
         {/* Three Main Action Buttons */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 animate-fade-in">
           {/* Scan Button */}
-          <button
+          <div
             onClick={() => navigate('/scan')}
-            className="group relative h-64 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105"
+            className="group relative h-64 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer"
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                navigate('/scan');
+              }
+            }}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 group-hover:from-primary/30 group-hover:to-primary/10 transition-all" />
             <Card className="h-full border-0 shadow-none bg-gradient-to-br from-primary/5 to-transparent cursor-pointer">
@@ -112,12 +119,19 @@ export default function Index() {
                 </div>
               </CardContent>
             </Card>
-          </button>
+          </div>
 
           {/* Clinic Finder Button */}
-          <button
+          <div
             onClick={() => navigate('/clinics')}
-            className="group relative h-64 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105"
+            className="group relative h-64 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer"
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                navigate('/clinics');
+              }
+            }}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 to-secondary/5 group-hover:from-secondary/30 group-hover:to-secondary/10 transition-all" />
             <Card className="h-full border-0 shadow-none bg-gradient-to-br from-secondary/5 to-transparent cursor-pointer">
@@ -135,12 +149,19 @@ export default function Index() {
                 </div>
               </CardContent>
             </Card>
-          </button>
+          </div>
 
           {/* Teleconsult Button */}
-          <button
+          <div
             onClick={() => navigate('/teleconsult')}
-            className="group relative h-64 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105"
+            className="group relative h-64 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer"
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                navigate('/teleconsult');
+              }
+            }}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-accent/5 group-hover:from-accent/30 group-hover:to-accent/10 transition-all" />
             <Card className="h-full border-0 shadow-none bg-gradient-to-br from-accent/5 to-transparent cursor-pointer">
@@ -158,14 +179,21 @@ export default function Index() {
                 </div>
               </CardContent>
             </Card>
-          </button>
+          </div>
         </div>
 
         {/* Quick Access Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 animate-fade-in">
-          <button
+          <div
             onClick={() => navigate('/history')}
-            className="group"
+            className="group cursor-pointer"
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                navigate('/history');
+              }
+            }}
           >
             <Card className="h-full hover:shadow-lg transition-all duration-200 hover:border-primary/50 cursor-pointer">
               <CardContent className="p-6 flex items-center gap-4">
@@ -178,11 +206,18 @@ export default function Index() {
                 </div>
               </CardContent>
             </Card>
-          </button>
+          </div>
 
-          <button
+          <div
             onClick={() => navigate('/progress')}
-            className="group"
+            className="group cursor-pointer"
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                navigate('/progress');
+              }
+            }}
           >
             <Card className="h-full hover:shadow-lg transition-all duration-200 hover:border-primary/50 cursor-pointer">
               <CardContent className="p-6 flex items-center gap-4">
@@ -195,7 +230,7 @@ export default function Index() {
                 </div>
               </CardContent>
             </Card>
-          </button>
+          </div>
         </div>
 
         {/* Voice Tip */}
